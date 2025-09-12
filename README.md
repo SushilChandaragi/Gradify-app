@@ -44,26 +44,52 @@ src/
 
 ## Getting Started
 
-1. **Install dependencies:**
+### 🚀 Quick Setup for Team Members
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/SushilChandaragi/Gradify.git
+   cd Gradify
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-2. **Configure Firebase:**
-   - Create a Firebase project at https://console.firebase.google.com
-   - Enable Authentication (Email/Password)
-   - Enable Firestore Database
-   - Copy your config and replace values in `src/firebase.js`
+3. **Set up environment variables:**
+   ```bash
+   # Copy the example file (Firebase config is already included)
+   cp .env.example .env
+   ```
 
-3. **Start development server:**
+4. **IMPORTANT: Enable Firebase Authentication** (Project owner must do this ONCE):
+   - Go to https://console.firebase.google.com
+   - Select "gradify-f7c5d" project  
+   - Click "Authentication" → "Get started"
+   - Go to "Sign-in method" tab
+   - Enable "Email/Password" (toggle ON)
+   - Click "Save"
+
+5. **Start development server:**
    ```bash
    npm run dev
    ```
 
-4. **Build for production:**
-   ```bash
-   npm run build
-   ```
+6. **Visit http://localhost:5173** - You should see the login page!
+
+### 🔧 Troubleshooting White Screen
+
+If you see a white screen:
+1. Check browser console for errors (F12 → Console)
+2. Make sure `.env` file exists with Firebase config
+3. Ensure Firebase Authentication is enabled (step 4 above)
+4. Try creating a test user in Firebase Console → Authentication → Users
+
+### 📱 Test Login
+Create a test user in Firebase Console:
+- Email: `test@gradify.com`
+- Password: `test123456`
 
 ## Features
 
@@ -84,18 +110,28 @@ Each page is structured as a placeholder ready for feature implementation:
 - News feed with college API integration  
 - AI quiz generation using PDF parsing and LLM APIs
 
-## Firebase Configuration
+## ⚠️ MUST ENABLE FIREBASE AUTHENTICATION
 
-Replace the placeholder values in `src/firebase.js`:
-```javascript
-const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com", 
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "your-app-id"
-};
+**Project Owner (SushilChandaragi) must do this ONCE:**
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Select "gradify-f7c5d" project
+3. Click "Authentication" → "Get started" 
+4. Go to "Sign-in method" tab
+5. Click on "Email/Password"
+6. **Enable the first toggle** (Email/Password)
+7. Click "Save"
+
+**Without this step, everyone will see a white screen!**
+
+## Firebase Configuration ✅
+
+The Firebase config is already set up in `.env.example`. When you copy it to `.env`, you get:
+```bash
+VITE_FIREBASE_API_KEY=AIzaSyD8I-vrNCdeT2lrNvOdZQhE5ca5Oys5bi8
+VITE_FIREBASE_AUTH_DOMAIN=gradify-f7c5d.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=gradify-f7c5d
+# ... etc
 ```
 
 ## Team Collaboration
