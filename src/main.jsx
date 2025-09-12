@@ -11,6 +11,7 @@ import TimetableTracker from './pages/TimetableTracker';
 import Navigation from './pages/Navigation';
 import LatestNews from './pages/LatestNews';
 import AIQuizGenerator from './pages/AIQuizGenerator';
+import CGPACalculator from './pages/CGPACalculator';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/navigation" element={<Navigation />} />
         <Route path="/latest-news" element={<LatestNews />} />
         <Route path="/ai-quiz-generator" element={<AIQuizGenerator />} />
+        <Route path="/cgpa-calculator" element={<CGPACalculator />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

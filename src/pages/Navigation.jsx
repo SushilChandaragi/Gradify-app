@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SimpleMap from '../components/SimpleMap';
 
+// Location types for filtering
+const LOCATION_TYPES = ["All", "Canteen", "Library", "Hostel", "Classroom", "Sports", "Other"];
+
 const Navigation = () => {
   const [isMapFullscreen, setIsMapFullscreen] = useState(false);
+  const [filterType, setFilterType] = useState("All");
 
   const toggleFullscreen = () => {
     setIsMapFullscreen(!isMapFullscreen);
@@ -22,7 +26,7 @@ const Navigation = () => {
       flexDirection: 'column',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
     }}>
-      {/* Header */}
+
       <div style={{
         background: 'linear-gradient(135deg, #1E293B 0%, #334155 100%)',
         color: '#F8FAFC',
@@ -46,7 +50,7 @@ const Navigation = () => {
             fontSize: '1.5rem',
             boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
           }}>
-            🗺️
+            �
           </div>
           <div>
             <h1 style={{ 
@@ -100,7 +104,7 @@ const Navigation = () => {
               e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
             }}
           >
-            {isMapFullscreen ? '📋 Show Controls' : '🖥️ Fullscreen'}
+            {isMapFullscreen ? '⚙️ Show Controls' : '⛶ Fullscreen'}
           </button>
           
           <Link 
@@ -128,10 +132,48 @@ const Navigation = () => {
               e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
             }}
           >
-            ← Home
+            🏠 Home
           </Link>
         </div>
       </div>
+
+      {/* Filter UI */}
+      {!isMapFullscreen && (
+        <div style={{
+          position: 'absolute',
+          top: '5.5rem',
+          left: '2rem',
+          zIndex: 1200,
+          background: 'rgba(30,41,59,0.95)',
+          borderRadius: '12px',
+          padding: '0.75rem 1.5rem',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+          color: '#F8FAFC',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem'
+        }}>
+          <label htmlFor="location-type-filter" style={{ fontWeight: '600', fontSize: '1rem' }}>🔍 Filter:</label>
+          <select
+            id="location-type-filter"
+            value={filterType}
+            onChange={e => setFilterType(e.target.value)}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: '8px',
+              border: '1px solid #334155',
+              background: '#0F172A',
+              color: '#F8FAFC',
+              fontSize: '1rem',
+              fontWeight: '500'
+            }}
+          >
+            {LOCATION_TYPES.map(type => (
+              <option key={type} value={type}>{type}</option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Map Container */}
       <div style={{
@@ -153,10 +195,10 @@ const Navigation = () => {
         }}>
           {/* Map Component */}
           <div style={{ height: '100%', width: '100%' }}>
-            <SimpleMap />
+            <SimpleMap filterType={filterType} />
           </div>
           
-          {/* Floating Info Panel */}
+          {/* Map Stats Panel */}
           {!isMapFullscreen && (
             <div style={{
               position: 'absolute',
@@ -168,7 +210,7 @@ const Navigation = () => {
               borderRadius: '16px',
               padding: '1.5rem',
               color: '#F8FAFC',
-              maxWidth: '300px',
+              maxWidth: '280px',
               boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
               zIndex: 1000
             }}>
@@ -181,106 +223,44 @@ const Navigation = () => {
                 <div style={{
                   width: '32px',
                   height: '32px',
-                  background: 'linear-gradient(135deg, #3B82F6, #1D4ED8)',
+                  background: 'linear-gradient(135deg, #22C55E, #16A34A)',
                   borderRadius: '8px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '1rem'
                 }}>
-                  💡
+                  🎓
                 </div>
                 <h3 style={{ 
                   margin: 0, 
                   fontSize: '1.1rem', 
                   fontWeight: '600' 
                 }}>
-                  Quick Tips
+                  Campus Overview
                 </h3>
               </div>
-              <ul style={{
-                margin: 0,
-                paddingLeft: '1.2rem',
+              <div style={{
                 fontSize: '0.875rem',
                 lineHeight: '1.6',
                 color: '#CBD5E1'
               }}>
-                <li>Click anywhere on the map to add a new place</li>
-                <li>Use the location button to find places near you</li>
-                <li>Click on existing markers to see reviews</li>
-                <li>Toggle fullscreen for better navigation</li>
-              </ul>
+                <p style={{ margin: '0 0 0.5rem 0' }}>
+                  <strong style={{ color: '#22C55E' }}>Interactive Campus Map</strong><br />
+                  Discover and review places around KLE College
+                </p>
+                <p style={{ margin: 0, fontSize: '0.8rem', color: '#94A3B8' }}>
+                  Click markers to view details or anywhere on the map to add new locations
+                </p>
+              </div>
             </div>
           )}
         </div>
       </div>
 
-      {/* Floating Action Buttons */}
-      {!isMapFullscreen && (
-        <div style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          zIndex: 1000
-        }}>
-          <button style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '16px',
-            border: 'none',
-            background: 'linear-gradient(135deg, #F59E0B, #D97706)',
-            color: 'white',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(245, 158, 11, 0.4)',
-            transition: 'all 0.3s ease',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.transform = 'scale(1.1) translateY(-2px)';
-            e.target.style.boxShadow = '0 12px 32px rgba(245, 158, 11, 0.6)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.transform = 'scale(1) translateY(0)';
-            e.target.style.boxShadow = '0 8px 24px rgba(245, 158, 11, 0.4)';
-          }}
-          title="Filter Places">
-            🔍
-          </button>
-          
-          <button style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '16px',
-            border: 'none',
-            background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)',
-            color: 'white',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(139, 92, 246, 0.4)',
-            transition: 'all 0.3s ease',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.transform = 'scale(1.1) translateY(-2px)';
-            e.target.style.boxShadow = '0 12px 32px rgba(139, 92, 246, 0.6)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.transform = 'scale(1) translateY(0)';
-            e.target.style.boxShadow = '0 8px 24px rgba(139, 92, 246, 0.4)';
-          }}
-          title="Share Location">
-            📤
-          </button>
-        </div>
-      )}
+
+
+
     </div>
   );
 };

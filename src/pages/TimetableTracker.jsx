@@ -269,8 +269,8 @@ const TimetableTracker = () => {
               </thead>
               <tbody>
                 {timeSlots.map((time, index) => (
-                  <tr key={time} style={{ backgroundColor: index % 2 === 0 ? '#F9FAFB' : 'white' }}>
-                    <td style={{ padding: '1rem', borderBottom: '1px solid #E5E7EB', fontWeight: 'bold' }}>{time}</td>
+                  <tr key={time} style={{ backgroundColor: index % 2 === 0 ? '#F3F4F6' : 'white' }}>
+                    <td style={{ padding: '1rem', borderBottom: '1px solid #E5E7EB', fontWeight: 'bold', fontSize: '0.95rem', color: '#1F2937', backgroundColor: '#E5E7EB' }}>{time}</td>
                     {days.map(day => {
                       const classItem = schedule.find(item => 
                         item.day === day &&

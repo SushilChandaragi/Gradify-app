@@ -59,55 +59,57 @@ const LatestNews = () => {
         minHeight: '100vh',
         padding: '0',
         animation: 'bgFade 6s ease-in-out infinite',
-        background: 'linear-gradient(120deg, #F9FAFB 0%, #FEF3C7 100%)'
+        background: 'linear-gradient(120deg, #1E3A8A 0%, #3730A3 100%)'
       }}
     >
       {/* Animated background keyframes */}
       <style>
         {`
           @keyframes bgFade {
-            0% { background: linear-gradient(120deg, #F9FAFB 0%, #FEF3C7 100%);}
-            50% { background: linear-gradient(120deg, #FEF3C7 0%, #F9FAFB 100%);}
-            100% { background: linear-gradient(120deg, #F9FAFB 0%, #FEF3C7 100%);}
+            0% { background: linear-gradient(120deg, #1E3A8A 0%, #3730A3 100%);}
+            50% { background: linear-gradient(120deg, #3730A3 0%, #1E3A8A 100%);}
+            100% { background: linear-gradient(120deg, #1E3A8A 0%, #3730A3 100%);}
           }
         `}
       </style>
 
       {/* Top Navigation Bar */}
       <nav style={{
-        backgroundColor: '#EAB308',
+        backgroundColor: 'rgba(30, 58, 138, 0.9)',
         padding: '1rem 2rem',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        backdropFilter: 'blur(10px)'
       }}>
-        <div style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#111827' }}>Gradify Portal</div>
+        <div style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#ffffff' }}>Gradify Portal</div>
         <div>
-          <a href="/home" style={{ marginRight: '1.5rem', color: '#111827', textDecoration: 'none', fontWeight: 'bold' }}>Home</a>
-          <a href="/profile" style={{ color: '#111827', textDecoration: 'none', fontWeight: 'bold' }}>Profile</a>
+          <a href="/home" style={{ marginRight: '1.5rem', color: '#ffffff', textDecoration: 'none', fontWeight: 'bold' }}>Home</a>
+          <a href="/profile" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 'bold' }}>Profile</a>
         </div>
       </nav>
 
       <div className="container" style={{ maxWidth: '800px', margin: '2rem auto' }}>
-        <div className="card" style={{ background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px #eab30833', padding: '2rem' }}>
-          <h2 style={{ color: '#EAB308', fontSize: '2rem', marginBottom: '1rem' }}>📰 Latest College News</h2>
-          <p style={{ color: '#6B7280', marginBottom: '2rem' }}>Stay updated with the latest announcements and events.</p>
+        <div className="card" style={{ background: 'rgba(255, 255, 255, 0.95)', borderRadius: '12px', boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)', padding: '2rem', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+          <h2 style={{ color: '#1E3A8A', fontSize: '2rem', marginBottom: '1rem' }}>📰 Latest College News</h2>
+          <p style={{ color: '#64748B', marginBottom: '2rem' }}>Stay updated with the latest announcements and events.</p>
           
           {/* Category Selector */}
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid #EAB308', paddingBottom: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '2px solid #1E3A8A', paddingBottom: '0.5rem' }}>
             {categories.map(cat => (
               <button
                 key={cat.key}
                 onClick={() => setSelectedCategory(cat.key)}
                 style={{
-                  background: selectedCategory === cat.key ? '#EAB308' : '#FEF3C7',
-                  color: selectedCategory === cat.key ? '#111827' : '#92400E',
+                  background: selectedCategory === cat.key ? '#1E3A8A' : 'rgba(30, 58, 138, 0.1)',
+                  color: selectedCategory === cat.key ? '#ffffff' : '#1E3A8A',
                   border: 'none',
-                  borderRadius: '6px 6px 0 0',
+                  borderRadius: '8px',
                   padding: '0.5rem 1.5rem',
                   fontWeight: 'bold',
                   cursor: 'pointer',
-                  boxShadow: selectedCategory === cat.key ? '0 2px 4px #eab30833' : 'none'
+                  boxShadow: selectedCategory === cat.key ? '0 4px 8px rgba(30, 58, 138, 0.3)' : 'none',
+                  transition: 'all 0.3s ease'
                 }}
               >
                 {cat.label}
@@ -123,24 +125,24 @@ const LatestNews = () => {
                   display: 'inline-block',
                   width: '40px',
                   height: '40px',
-                  border: '4px solid #EAB308',
-                  borderTop: '4px solid #FEF3C7',
+                  border: '4px solid #1E3A8A',
+                  borderTop: '4px solid rgba(30, 58, 138, 0.3)',
                   borderRadius: '50%',
                   animation: 'spin 1s linear infinite'
                 }} />
                 <style>
                   {`@keyframes spin { 0% { transform: rotate(0deg);} 100% {transform: rotate(360deg);} }`}
                 </style>
-                <div style={{ marginTop: '1rem', color: '#92400E' }}>Loading news...</div>
+                <div style={{ marginTop: '1rem', color: '#1E3A8A' }}>Loading news...</div>
               </div>
             ) : news.length === 0 ? (
               <div style={{
                 padding: '2rem',
-                backgroundColor: '#FEF3C7',
+                backgroundColor: 'rgba(30, 58, 138, 0.1)',
                 borderRadius: '8px',
                 textAlign: 'center',
-                border: '1px solid #EAB308',
-                color: '#92400E'
+                border: '1px solid #1E3A8A',
+                color: '#1E3A8A'
               }}>
                 No news in this category.
               </div>
@@ -150,32 +152,37 @@ const LatestNews = () => {
                   <div key={item.id} style={{
                     display: 'flex',
                     alignItems: 'flex-start',
-                    background: '#FEF3C7',
-                    borderRadius: '8px',
-                    border: '1px solid #EAB308',
+                    background: 'rgba(30, 58, 138, 0.05)',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(30, 58, 138, 0.2)',
                     marginBottom: '1.5rem',
-                    padding: '1rem'
+                    padding: '1rem',
+                    backdropFilter: 'blur(5px)'
                   }}>
                     {item.image && (
                       <img src={item.image} alt="news" style={{ width: '80px', height: '80px', borderRadius: '8px', marginRight: '1rem' }} />
                     )}
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#92400E' }}>{item.title}</div>
-                      <div style={{ color: '#6B7280', margin: '0.5rem 0' }}>{item.description}</div>
-                      <div style={{ fontSize: '0.9rem', color: '#92400E', marginBottom: '0.5rem' }}>
+                      <div style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#1E3A8A' }}>{item.title}</div>
+                      <div style={{ color: '#64748B', margin: '0.5rem 0' }}>{item.description}</div>
+                      <div style={{ fontSize: '0.9rem', color: '#1E3A8A', marginBottom: '0.5rem' }}>
                         {new Date(item.date).toLocaleString()}
                       </div>
                       <button
                         style={{
-                          background: '#EAB308',
-                          color: '#111827',
+                          background: '#1E3A8A',
+                          color: '#ffffff',
                           border: 'none',
-                          borderRadius: '6px',
+                          borderRadius: '8px',
                           padding: '0.4rem 1rem',
                           fontWeight: 'bold',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          boxShadow: '0 2px 4px rgba(30, 58, 138, 0.3)'
                         }}
                         onClick={() => setModalNews(item)}
+                        onMouseEnter={(e) => e.target.style.backgroundColor = '#3730A3'}
+                        onMouseLeave={(e) => e.target.style.backgroundColor = '#1E3A8A'}
                       >
                         Read More
                       </button>
@@ -199,13 +206,15 @@ const LatestNews = () => {
             zIndex: 1000
           }}>
             <div style={{
-              background: '#fff',
-              borderRadius: '10px',
+              background: 'rgba(255, 255, 255, 0.95)',
+              borderRadius: '16px',
               maxWidth: '500px',
               width: '90%',
               padding: '2rem',
-              boxShadow: '0 4px 16px #eab30855',
-              position: 'relative'
+              boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)',
+              position: 'relative',
+              backdropFilter: 'blur(15px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)'
             }}>
               {/* Modal header with flexbox for alignment */}
               <div style={{
@@ -214,11 +223,11 @@ const LatestNews = () => {
                 justifyContent: 'space-between',
                 marginBottom: '1rem'
               }}>
-                <h3 style={{ color: '#EAB308', margin: 0 }}>{modalNews.title}</h3>
+                <h3 style={{ color: '#1E3A8A', margin: 0 }}>{modalNews.title}</h3>
                 <button
                   style={{
-                    background: '#EAB308',
-                    color: '#111827',
+                    background: '#1E3A8A',
+                    color: '#ffffff',
                     border: 'none',
                     borderRadius: '50%',
                     width: '32px',
@@ -234,8 +243,8 @@ const LatestNews = () => {
                   aria-label="Close"
                 >×</button>
               </div>
-              <div style={{ color: '#6B7280', marginBottom: '1rem' }}>{modalNews.full}</div>
-              <div style={{ fontSize: '0.9rem', color: '#92400E' }}>
+              <div style={{ color: '#64748B', marginBottom: '1rem' }}>{modalNews.full}</div>
+              <div style={{ fontSize: '0.9rem', color: '#1E3A8A' }}>
                 {new Date(modalNews.date).toLocaleString()}
               </div>
             </div>
@@ -244,13 +253,15 @@ const LatestNews = () => {
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <a href="/home" style={{
-            backgroundColor: '#EAB308',
-            color: '#111827',
+            backgroundColor: '#1E3A8A',
+            color: '#ffffff',
             padding: '0.75rem 2rem',
             borderRadius: '8px',
             textDecoration: 'none',
             fontWeight: 'bold',
-            display: 'inline-block'
+            display: 'inline-block',
+            boxShadow: '0 4px 8px rgba(30, 58, 138, 0.3)',
+            transition: 'all 0.3s ease'
           }}>← Back to Home</a>
         </div>
       </div>
