@@ -58,7 +58,6 @@ const Home = () => {
         }}
       >
         <Link to="/timetable-tracker" style={{
-<<<<<<< HEAD
           background: '#1E3A8A', 
           color: '#F9FAFB', 
           padding: '3rem 2rem', 
@@ -127,8 +126,6 @@ const Home = () => {
 export default Home;
       >
         <a href="/timetable-tracker" style={{
-=======
->>>>>>> e416be254658f615cc5da6dffa87bbda0eeba589
           background: '#1E3A8A', 
           color: '#F9FAFB', 
           padding: '3rem 2rem', 
@@ -142,8 +139,8 @@ export default Home;
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
-        }}>📅 Timetable Tracker</Link>
-        <Link to="/navigation" style={{
+        }}>📅 Timetable Tracker</a>
+        <a href="/navigation" style={{
           background: '#4338CA', 
           color: '#F9FAFB', 
           padding: '3rem 2rem', 
@@ -157,8 +154,8 @@ export default Home;
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
-        }}>🗺️ Navigation</Link>
-        <Link to="/latest-news" style={{
+        }}>🗺️ Navigation</a>
+        <a href="/latest-news" style={{
           background: '#EAB308', 
           color: '#111827', 
           padding: '3rem 2rem', 
@@ -172,8 +169,8 @@ export default Home;
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
-        }}>📰 Latest News</Link>
-        <Link to="/ai-quiz-generator" style={{
+        }}>📰 Latest News</a>
+        <a href="/ai-quiz-generator" style={{
           background: 'linear-gradient(135deg, #38BDF8 0%, #6366F1 100%)',
           color: '#fff',
           padding: '3rem 2rem',
@@ -188,12 +185,8 @@ export default Home;
           alignItems: 'center',
           justifyContent: 'center',
           border: 'none'
-<<<<<<< HEAD
         }}>🤖 AI Quiz Generator</a>
 >>>>>>> 37fb558 (Updated home page layout and styling)
-=======
-        }}>🤖 AI Quiz Generator</Link>
->>>>>>> e416be254658f615cc5da6dffa87bbda0eeba589
       </div>
     </div>
   );
