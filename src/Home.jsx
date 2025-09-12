@@ -57,7 +57,7 @@ const Home = () => {
           justifyItems: 'stretch'
         }}
       >
-        <a href="/timetable-tracker" style={{
+        <Link to="/timetable-tracker" style={{
           background: '#1E3A8A', 
           color: '#F9FAFB', 
           padding: '3rem 2rem', 
@@ -71,8 +71,8 @@ const Home = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
-        }}>📅 Timetable Tracker</a>
-        <a href="/navigation" style={{
+        }}>📅 Timetable Tracker</Link>
+        <Link to="/navigation" style={{
           background: '#4338CA', 
           color: '#F9FAFB', 
           padding: '3rem 2rem', 
@@ -86,8 +86,8 @@ const Home = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
-        }}>🗺️ Navigation</a>
-        <a href="/latest-news" style={{
+        }}>🗺️ Navigation</Link>
+        <Link to="/latest-news" style={{
           background: '#EAB308', 
           color: '#111827', 
           padding: '3rem 2rem', 
@@ -101,8 +101,8 @@ const Home = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
-        }}>📰 Latest News</a>
-        <a href="/ai-quiz-generator" style={{
+        }}>📰 Latest News</Link>
+        <Link to="/ai-quiz-generator" style={{
           background: 'linear-gradient(135deg, #38BDF8 0%, #6366F1 100%)',
           color: '#fff',
           padding: '3rem 2rem',
@@ -117,7 +117,7 @@ const Home = () => {
           alignItems: 'center',
           justifyContent: 'center',
           border: 'none'
-        }}>🤖 AI Quiz Generator</a>
+        }}>🤖 AI Quiz Generator</Link>
       </div>
     </div>
   );
