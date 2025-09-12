@@ -15,6 +15,11 @@ const AIQuizGenerator = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
+  // Scroll to top utility function
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Handle file upload
   const handleFileUpload = (file) => {
     setError('');
@@ -83,6 +88,7 @@ const AIQuizGenerator = () => {
       
       console.log('Quiz generated successfully:', quiz);
       setGeneratedQuiz(quiz);
+      scrollToTop(); // Scroll to top when quiz is generated
       
     } catch (err) {
       setError(`Failed to generate quiz: ${err.message}`);
@@ -142,6 +148,7 @@ const AIQuizGenerator = () => {
   const submitQuiz = () => {
     setQuizCompleted(true);
     setShowResults(true);
+    scrollToTop(); // Scroll to top when results are shown
   };
 
   // Reset quiz to take again
@@ -149,11 +156,19 @@ const AIQuizGenerator = () => {
     setUserAnswers({});
     setQuizCompleted(false);
     setShowResults(false);
+    scrollToTop(); // Scroll to top when quiz is reset
   };
 
   return (
-    <div style={{ backgroundColor: '#F9FAFB', minHeight: '100vh', padding: '2rem' }}>
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <div style={{ 
+      backgroundColor: '#F9FAFB', 
+      minHeight: '100vh', 
+      padding: '2rem'
+    }}>
+      <div style={{ 
+        maxWidth: '1000px', 
+        margin: '0 auto'
+      }}>
         <div style={{
           backgroundColor: 'white',
           borderRadius: '12px',
