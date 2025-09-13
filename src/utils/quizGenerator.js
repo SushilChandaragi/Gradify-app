@@ -1667,9 +1667,8 @@ export async function generateQuizFromPDF(pdfFile, settings) {
   }
 }
 
-// Export validation and formatting functions
-// Export validation and formatting functions
-export { validateQuizResponse, formatQuizForExport } from './quizHelpers';
+// Export validation and formatting functions would go here if needed
+// Note: quizHelpers was removed during cleanup
 
 /**
  * Parse quiz from advanced AI-generated text
