@@ -13,17 +13,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// Create colored markers for different place types
-const createColoredIcon = (color) => {
-  return L.divIcon({
-    className: 'custom-marker',
-    html: `<div style="background-color: ${color}; width: 20px; height: 20px; border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>`,
-    iconSize: [26, 26],
-    iconAnchor: [13, 13]
-  });
-};
-
-
 const kleCollege = { lat: 15.3647, lng: 75.1240 };
 
 const AddLocationOnClick = ({ onAdd }) => {
@@ -35,7 +24,7 @@ const AddLocationOnClick = ({ onAdd }) => {
   return null;
 };
 
-const SimpleMap = () => {
+const SimpleMap = ({ filterType = "All" }) => {
   const [places, setPlaces] = useState([]);
   const [selected, setSelected] = useState(null);
   const [reviews, setReviews] = useState([]);
