@@ -1,37 +1,7 @@
 # 🎓 Gradify - Smart Campus Solutions Platform
 
 A comprehensive student-centric platform built with React + Vite, featuring AI-powered quiz generation, interactive campus navigation, and intelligent timetable management.
-
-## 🌟 Key Features
-
-### 🤖 AI Quiz Generator
-- **AI-Powered Question Generation**: Upload PDF documents and automatically generate quizzes using advanced T5-Large ML model
-- **Interactive Quiz Interface**: Take quizzes with real-time scoring and detailed explanations
-- **PDF Text Extraction**: Advanced text processing with multiple fallback methods for robust content extraction
-- **Smart Question Types**: Multiple choice questions with intelligent distractors and explanations
-
-### 📅 Smart Timetable Tracker
-- **Interactive Schedule Management**: Add, edit, and organize class schedules with visual timetable grid
-- **Conflict Detection**: Automatic detection and prevention of scheduling conflicts
-- **Persistent Storage**: Local storage integration for data persistence across sessions
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-
-### 🗺️ Campus Navigation & Maps
-- **Interactive Campus Maps**: Navigate through campus with interactive map integration
-- **React-Leaflet Integration**: High-performance mapping with detailed campus locations
-- **Location Services**: Find buildings, facilities, and points of interest
-
-### � CGPA Calculator
-- **Grade Point Average Tracking**: Calculate semester-wise SGPA and overall CGPA
-- **Multi-Semester Support**: Track academic performance across multiple semesters
-- **Grade Scale Integration**: Support for standard Indian university grading system (O, A+, A, B+, B, C, P, F)
-- **Credit-Based Calculation**: Accurate CGPA calculation based on credit hours and grade points
-- **Data Persistence**: Local storage to save academic records across sessions
-- **Performance Analytics**: Visual representation of academic progress and trends
-
-### 📰 Latest News & Updates
-- **Real-time College Updates**: Stay informed with the latest campus news and announcements
-- **Organized Information**: Categorized news feed for easy browsing
+[Working Vercel site](https://thegradify.vercel.app/)
 
 ## 📁 Project Structure
 
@@ -151,18 +121,6 @@ We welcome contributions to make Gradify even better! Here's how you can help:
 5. Push to the branch (`git push origin feature/AmazingFeature`)
 6. Open a Pull Request
 
-### Contribution Guidelines
-- Follow the existing code style and structure
-- Write clear, concise commit messages
-- Test your changes thoroughly
-- Update documentation as needed
-- Ensure your code passes ESLint checks
-
-### Issues and Feature Requests
-- Use GitHub Issues to report bugs or request features
-- Provide detailed descriptions and steps to reproduce
-- Label issues appropriately (bug, enhancement, question, etc.)
-
 ## 🎯 Future Enhancements
 
 - **Mobile Application**: React Native app for iOS and Android
@@ -180,13 +138,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👥 Team
 
 Gradify is developed and maintained by passionate students who understand the challenges of academic life.
-
-## 🙏 Acknowledgments
-
-- **Hugging Face**: For providing accessible AI model APIs
-- **Firebase**: For robust backend infrastructure
-- **React Community**: For excellent documentation and community support
-- **Open Source Contributors**: For the amazing libraries that make this project possible
 
 ## 📞 Support
 
@@ -207,7 +158,7 @@ If you encounter any issues or have questions:
 
 ## 🎨 Design System
 
-### Color Palette (Professional & Academic)
+### Color Palette 
 - **Primary**: `#1E3A8A` (Royal Blue — authority & trust)
 - **Secondary**: `#4338CA` (Indigo — education & wisdom)
 - **Accent**: `#EAB308` (Gold — prestige & highlights)
@@ -338,37 +289,11 @@ src/
 
 6. **Visit http://localhost:5173** - You should see the login page!
 
-### 🔧 Troubleshooting White Screen
-
-If you see a white screen:
-1. Check browser console for errors (F12 → Console)
-2. Make sure `.env` file exists with Firebase config
-3. Ensure Firebase Authentication is enabled (step 4 above)
-4. Try creating a test user in Firebase Console → Authentication → Users
 
 ### 📱 Test Login
 Create a test user in Firebase Console:
 - Email: `test@gradify.com`
 - Password: `test123456`
-
-## Features
-
-### Authentication Flow
-- Landing page redirects to Login
-- Users can sign up or login with email/password
-- Successful authentication redirects to Home dashboard
-
-### Dashboard
-- Clean, professional design with 4 main feature cards
-- Each feature has its own dedicated page
-- Consistent color scheme throughout
-
-### Future Development
-Each page is structured as a placeholder ready for feature implementation:
-- Timetable integration with calendar APIs
-- Interactive campus maps
-- News feed with college API integration  
-- AI quiz generation using PDF parsing and LLM APIs
 
 ## ⚠️ MUST ENABLE FIREBASE AUTHENTICATION
 
