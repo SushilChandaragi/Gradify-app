@@ -10,26 +10,28 @@ Gradify/
 ├── public/
 │   └── vite.svg
 ├── src/
-│   ├── assets/
-│   │   └── react.svg
+│   ├── components/
+│   │   └── SimpleMap.jsx            # Interactive campus map component
 │   ├── pages/
-│   │   ├── AIQuizGenerator.jsx      # AI-powered quiz generation
+│   │   ├── AIQuizGenerator.jsx      # AI-powered quiz generation from PDFs
 │   │   ├── CGPACalculator.jsx       # CGPA tracking and calculation
 │   │   ├── LatestNews.jsx           # Campus news and updates
-│   │   ├── Login.jsx                # User authentication
-│   │   ├── Navigation.jsx           # Navigation component
+│   │   ├── Login.jsx                # User authentication with Vanta background
+│   │   ├── Navigation.jsx           # Campus navigation with interactive map
 │   │   ├── Signup.jsx               # User registration
-│   │   └── TimetableTracker.jsx     # Schedule management
-│   ├── App.css                      # Main application styles
-│   ├── App.jsx                      # Main application component
+│   │   ├── TimetableTracker.jsx     # Schedule management
+│   │   └── vanta-init.js            # Vanta.js animation initialization
+│   ├── utils/
+│   │   └── quizGenerator.js         # PDF text extraction and quiz generation logic
 │   ├── firebase.js                  # Firebase configuration
+│   ├── Home.css                     # Home page styles
 │   ├── Home.jsx                     # Dashboard/landing page
 │   ├── index.css                    # Global styles
 │   └── main.jsx                     # Application entry point
+├── .env.example                     # Environment variables template
 ├── eslint.config.js                 # ESLint configuration
 ├── index.html                       # HTML template
 ├── package.json                     # Dependencies and scripts
-├── README.md                        # Project documentation
 └── vite.config.js                   # Vite configuration
 ```
 
@@ -44,8 +46,8 @@ Gradify/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/Gradify.git
-   cd Gradify
+   git clone https://github.com/SushilChandaragi/Gradify-app.git
+   cd Gradify-app
    ```
 
 2. **Install dependencies**
@@ -53,22 +55,18 @@ Gradify/
    npm install
    ```
 
-3. **Configure Firebase**
-   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
-   - Enable Authentication and Firestore Database
-   - Copy your Firebase configuration
-   - Update the `firebase.js` file with your configuration:
-   
-   ```javascript
-   const firebaseConfig = {
-     apiKey: "your-api-key",
-     authDomain: "your-project.firebaseapp.com",
-     projectId: "your-project-id",
-     storageBucket: "your-project.appspot.com",
-     messagingSenderId: "your-sender-id",
-     appId: "your-app-id"
-   };
-   ```
+3. **Configure environment variables**
+   - Copy `.env.example` to `.env`
+   - Update the `.env` file with your Firebase configuration
+   2. Edit `.env` with your Firebase config:
+```env
+VITE_FIREBASE_API_KEY=your_actual_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_actual_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
 
 4. **Start the development server**
    ```bash
@@ -83,10 +81,11 @@ Gradify/
 
 1. **Sign Up/Login**: Create an account or login to access all features
 2. **Dashboard**: Navigate through different tools from the main dashboard
-3. **Quiz Generator**: Upload PDFs and generate AI-powered quizzes
+3. **Quiz Generator**: Upload PDFs and generate AI-powered quizzes using Hugging Face API
 4. **CGPA Calculator**: Track your academic performance across semesters
-5. **Timetable Tracker**: Manage your class schedule with conflict detection
-6. **Latest News**: Stay updated with campus announcements
+5. **Timetable Tracker**: Manage your class schedule
+6. **Campus Navigation**: Interactive map with location markers and reviews
+7. **Latest News**: Stay updated with campus announcements
 
 ## 🛠️ Tech Stack
 
@@ -100,51 +99,27 @@ Gradify/
 - **Hugging Face API**: AI model integration for quiz generation
 
 ### Libraries & Dependencies
-- **PDF.js**: PDF processing and text extraction
-- **React Leaflet**: Interactive maps for campus navigation
-- **Leaflet**: Open-source mapping library
+- **PDF.js**: PDF processing and text extraction for quiz generation
+- **Leaflet**: Interactive maps for campus navigation
+- **Vanta.js + Three.js**: Animated background effects on login page
 
 ### Development Tools
 - **ESLint**: Code linting and formatting
 - **Vite**: Module bundling and hot reload
 - **Git**: Version control and collaboration
 
-## 🤝 Contributing
+## 🎯 Key Features
 
-We welcome contributions to make Gradify even better! Here's how you can help:
-
-### Getting Started
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-5. Push to the branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
-
-## 🎯 Future Enhancements
-
-- **Mobile Application**: React Native app for iOS and Android
-- **Advanced AI Features**: Personalized learning recommendations
-- **Study Groups**: Collaborative study session management
-- **Grade Predictions**: ML-based academic performance forecasting
-- **Integration**: Connect with popular LMS platforms
-- **Notifications**: Real-time alerts and reminders
-- **Analytics Dashboard**: Detailed academic performance insights
+- **AI Quiz Generation**: Upload PDFs and generate intelligent quizzes using advanced NLP
+- **Interactive Campus Map**: Navigate campus with location markers and user reviews
+- **CGPA Calculator**: Track academic performance with semester-wise calculations
+- **Timetable Management**: Organize and manage class schedules
+- **Modern UI**: Dark theme with glassmorphism effects and Vanta.js animations
+- **Firebase Integration**: Secure authentication and real-time data storage
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Team
-
-Gradify is developed and maintained by passionate students who understand the challenges of academic life.
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-- Create an issue on GitHub
-- Reach out to the development team
-- Check the documentation for common solutions
+This project is licensed under the MIT License.
 
 ---
 
@@ -152,179 +127,10 @@ If you encounter any issues or have questions:
 
 *Gradify - Your Complete Academic Companion*
 
-### 🔐 Secure Authentication
-- **Firebase Authentication**: Secure login and signup system
-- **User Management**: Complete user account management with Firebase backend
+## 🎨 Design Features
 
-## 🎨 Design System
-
-### Color Palette 
-- **Primary**: `#1E3A8A` (Royal Blue — authority & trust)
-- **Secondary**: `#4338CA` (Indigo — education & wisdom)
-- **Accent**: `#EAB308` (Gold — prestige & highlights)
-- **Background**: `#F9FAFB` (Clean Off-White)
-- **Text**: `#111827` (Professional Dark)
-- **Subtle Text**: `#6B7280` (Secondary Information)
-
-### Typography & Spacing
-- **Font Family**: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+- **Dark Theme**: Professional dark blue/purple color scheme
+- **Glassmorphism Effects**: Modern transparent cards with backdrop blur
+- **Animated Background**: Vanta.js network animation on login page
 - **Responsive Design**: Mobile-first approach with seamless desktop scaling
 - **Smooth Interactions**: CSS transitions and hover effects throughout
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **React 18** - Modern component-based architecture
-- **Vite** - Lightning-fast development and build tool
-- **React Router DOM** - Client-side routing and navigation
-- **CSS3** - Custom properties and modern styling techniques
-
-### AI & ML Integration
-- **Hugging Face Transformers** - T5-Large model for question generation
-- **PDF.js** - Browser-based PDF text extraction
-- **Advanced Text Processing** - Multiple extraction methods with fallbacks
-
-### Backend & Database
-- **Firebase Authentication** - Secure user management
-- **Firebase Firestore** - Real-time database for user data and content
-- **Local Storage** - Client-side data persistence for timetables
-
-### Mapping & Navigation
-- **React-Leaflet** - Interactive map components
-- **Leaflet** - Open-source mapping library
-- **Geolocation APIs** - Location-based services
-
-## 📁 Project Architecture
-```
-src/
-├── pages/                    # Main application pages
-│   ├── Login.jsx            # 🔐 Firebase authentication login
-│   ├── Signup.jsx           # 📝 User registration system
-│   ├── TimetableTracker.jsx # 📅 Interactive schedule management
-│   ├── Navigation.jsx       # 🗺️ Campus navigation & maps
-│   ├── LatestNews.jsx      # 📰 College news & announcements
-│   └── AIQuizGenerator.jsx # 🤖 AI-powered quiz generation
-├── utils/                   # Utility functions and helpers
-│   ├── quizGenerator.js     # AI/ML quiz generation logic
-│   └── quizHelpers.js      # Quiz processing utilities
-├── components/              # Reusable UI components
-├── assets/                  # Static assets and images
-├── App.jsx                 # Main application component
-├── Home.jsx               # Dashboard/landing page
-├── main.jsx               # Router configuration & app entry
-├── firebase.js            # Firebase configuration & setup
-└── index.css             # Global styles & theme variables
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-- **Node.js** (v16 or higher)
-- **npm** or **yarn** package manager
-- **Git** for version control
-- **Modern web browser** (Chrome, Firefox, Safari, Edge)
-
-### 🔧 Installation & Setup
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/SushilChandaragi/Gradify.git
-   cd Gradify
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-   
-   This will install all required packages including:
-   - React & React DOM
-   - Vite build tool
-   - React Router for navigation
-   - Firebase for authentication & database
-   - React-Leaflet for mapping
-   - PDF.js for document processing
-
-3. **Environment Setup:**
-   Create a `.env` file in the root directory:
-   ```env
-   VITE_FIREBASE_API_KEY=your_firebase_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
-   VITE_HUGGINGFACE_API_KEY=your_huggingface_api_key
-   ```
-
-4. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-   
-   The application will be available at `http://localhost:5173` (or next available port)
-
-5. **Build for production:**
-   ```bash
-   ```
-
-3. **Set up environment variables:**
-   ```bash
-   # Copy the example file (Firebase config is already included)
-   cp .env.example .env
-   ```
-
-4. **IMPORTANT: Enable Firebase Authentication** (Project owner must do this ONCE):
-   - Go to https://console.firebase.google.com
-   - Select "gradify-f7c5d" project  
-   - Click "Authentication" → "Get started"
-   - Go to "Sign-in method" tab
-   - Enable "Email/Password" (toggle ON)
-   - Click "Save"
-
-5. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-
-6. **Visit http://localhost:5173** - You should see the login page!
-
-
-### 📱 Test Login
-Create a test user in Firebase Console:
-- Email: `test@gradify.com`
-- Password: `test123456`
-
-## ⚠️ MUST ENABLE FIREBASE AUTHENTICATION
-
-**Project Owner (SushilChandaragi) must do this ONCE:**
-
-1. Go to [Firebase Console](https://console.firebase.google.com)
-2. Select "gradify-f7c5d" project
-3. Click "Authentication" → "Get started" 
-4. Go to "Sign-in method" tab
-5. Click on "Email/Password"
-6. **Enable the first toggle** (Email/Password)
-7. Click "Save"
-
-**Without this step, everyone will see a white screen!**
-
-## Firebase Configuration ✅
-
-The Firebase config is already set up in `.env.example`. When you copy it to `.env`, you get:
-```bash
-VITE_FIREBASE_API_KEY=AIzaSyD8I-vrNCdeT2lrNvOdZQhE5ca5Oys5bi8
-VITE_FIREBASE_AUTH_DOMAIN=gradify-f7c5d.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=gradify-f7c5d
-# ... etc
-```
-
-## Team Collaboration
-
-The project structure is designed for team development:
-- Each page is a separate component for parallel development
-- Consistent styling through CSS custom properties
-- Clear separation of concerns between auth, routing, and features
-- Firebase provides real-time collaboration capabilities
-
-Ready for your team to build innovative campus solutions! 🎓

@@ -13,7 +13,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-const kleCollege = { lat: 15.3647, lng: 75.1240 };
+const kleCollege = { lat: 15.8203, lng: 74.4986 };
 
 const AddLocationOnClick = ({ onAdd }) => {
   useMapEvents({

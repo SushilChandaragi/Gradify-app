@@ -1,7 +1,3 @@
-## 🚨 FRIENDS CAN'T ACCESS WEBSITE - TROUBLESHOOTING
-
-### 🔍 **Diagnosis Steps for Your Friends:**
-
 #### 1. **Basic Setup Check**
 Your friends should run these commands **in order**:
 
@@ -68,14 +64,6 @@ npm run dev -- --host
 # This will show Network URL they can access
 ```
 
-#### 4. **Debugging Steps**
-
-Ask your friends to share:
-1. **What OS** they're using (Windows/Mac/Linux)
-2. **Node.js version**: `node --version`
-3. **npm version**: `npm --version`
-4. **Exact error message** they see
-5. **Screenshot** of their terminal
 
 #### 5. **Quick Test Commands**
 
